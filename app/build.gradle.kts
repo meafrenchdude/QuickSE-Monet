@@ -18,7 +18,7 @@ android {
     signingConfigs {
     create("release") {
         // Use relative path that works in CI
-        storeFile = file("${project.rootDir}/release.keystore")
+        storeFile = file("${rootDir}/release.keystore")
         storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
         keyAlias = System.getenv("KEY_ALIAS") ?: ""
         keyPassword = System.getenv("KEY_PASSWORD") ?: ""

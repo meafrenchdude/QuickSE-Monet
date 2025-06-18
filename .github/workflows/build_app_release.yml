@@ -19,8 +19,8 @@ jobs:
 
     - name: Decode Keystore
       run: |
-        echo "${{ secrets.UPLOAD_KEYSTORE }}" | base64 -d > release.keystore
-      shell: bash
+         echo "${{ secrets.UPLOAD_KEYSTORE }}" | base64 -d > release.keystore
+         keytool -list -keystore release.keystore -storepass "${{ secrets.KEYSTORE_PASSWORD }}"
 
     - name: Verify Keystore
       run: |
@@ -31,7 +31,7 @@ jobs:
       env:
         KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }} 
       run: ./gradlew assembleRelease
 
     - name: Upload APK Artifact
