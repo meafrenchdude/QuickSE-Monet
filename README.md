@@ -22,6 +22,23 @@ Built using **Jetpack Compose** and Kotlin, it offers a fast and intuitive exper
 
 ---
 
+## ⚙️ How QuickSE Works
+
+QuickSE uses root access to control SELinux on your Android device:
+
+- 🧩 **Check Status:** Runs `getenforce` to read the current SELinux mode.
+- 🔁 **Toggle Mode:** Executes `setenforce 0` or `setenforce 1` to switch between Permissive and Enforcing.
+- 🧠 **Built with Jetpack Compose:** Offers a modern, responsive UI with Material You styling.
+
+> ⚠️ Requires root access. SELinux mode resets on reboot unless re-applied.
+
+---
+
+## ⬇️  Download
+- [**Download APK**](https://github.com/maazm7d/QuickSE/releases)
+ 
+---
+
 ## 🤝 Contributing
 
 Pull requests are welcome! For major changes, open an issue first to discuss what you'd like to change.
@@ -34,23 +51,13 @@ Feel free to fork and submit PRs for:
 
 ---
 
+
 ## 📄 License
 
-Licensed under the [GNU GPLv3](LICENSE).  
+Licensed under the [GNU GPLv3](LICENSE).
 You are free to use, modify, and distribute this app under the terms of the license.
 
 ---
-
-## ⚙️ How QuickSE Works
-
-QuickSE uses root access to control SELinux on your Android device:
-
-- 🧩 **Check Status:** Runs `getenforce` to read the current SELinux mode.
-- 🔁 **Toggle Mode:** Executes `setenforce 0` or `setenforce 1` to switch between Permissive and Enforcing.
-- 🧠 **Built with Jetpack Compose:** Offers a modern, responsive UI with Material You styling.
-
-> ⚠️ Requires root access. SELinux mode resets on reboot unless re-applied.
-
 
 
 ## 📬 Contact / Support
