@@ -15,15 +15,26 @@ android {
         versionName = "1.0"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+    signingConfigs {
+    create("release") {
+        // Use relative path that works in CI
+        storeFile = file("${project.rootDir}/release.keystore")
+        storePassword = System.getenv("KEYSTORE_PASSWORD") ?: ""
+        keyAlias = System.getenv("KEY_ALIAS") ?: ""
+        keyPassword = System.getenv("KEY_PASSWORD") ?: ""
     }
+}
+
+    buildTypes {
+    release {
+        isMinifyEnabled = true
+        proguardFiles(
+            getDefaultProguardFile("proguard-android-optimize.txt"),
+            "proguard-rules.pro"
+        )
+        signingConfig = signingConfigs.getByName("release")
+    }
+}
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
