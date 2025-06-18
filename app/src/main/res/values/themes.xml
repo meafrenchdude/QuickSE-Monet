@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Theme.SelinuxStatus" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+
+        <!-- Secondary Colors -->
+        <item name="colorSecondary">@color/md_theme_light_secondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_light_secondaryContainer</item>
+        <item name="colorOnSecondary">@color/md_theme_light_onSecondary</item>
+
+        <!-- System bar colors -->
+        <item name="android:statusBarColor">@color/md_theme_light_primary</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+</resources>
