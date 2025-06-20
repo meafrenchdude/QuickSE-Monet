@@ -21,13 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import com.maazm7d.quickse.util.isAutoToggleEnabled
-import com.maazm7d.quickse.util.setAutoToggleEnabled
 
 @Composable
 fun AutoToggleSwitch() {
