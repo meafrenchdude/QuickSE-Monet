@@ -99,7 +99,7 @@ fun MainScreen() {
                     .padding(innerPadding)
                     .safeDrawingPadding()
                     .padding(horizontal = 24.dp),
-                verticalArrangement = androidx.compose.foundation.layout.Arrangement.Center,
+                verticalArrangement = androidx.compose.foundation.layout.Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 StatusCard(currentStatus = currentStatus)

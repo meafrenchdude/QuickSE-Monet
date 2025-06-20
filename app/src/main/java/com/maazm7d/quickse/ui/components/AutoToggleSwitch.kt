@@ -20,6 +20,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import com.maazm7d.quickse.util.isAutoToggleEnabled
 import com.maazm7d.quickse.util.setAutoToggleEnabled
 
@@ -27,37 +33,70 @@ import com.maazm7d.quickse.util.setAutoToggleEnabled
 fun AutoToggleSwitch() {
     val context = LocalContext.current
     var autoToggle by remember { mutableStateOf(isAutoToggleEnabled(context)) }
+
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { isGranted ->
         if (!isGranted) {
-            Toast.makeText(context, "Notification permission denied", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "Notification permission denied",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
+
     LaunchedEffect(Unit) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             permissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
 
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
+    Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 8.dp)
-    ) {
-        Text("Auto-toggle on boot")
-        Spacer(modifier = Modifier.weight(1f))
-        Switch(
-            checked = autoToggle,
-            onCheckedChange = {
-                autoToggle = it
-                setAutoToggleEnabled(context, it)
-            },
-            colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colorScheme.primary
+            .padding(vertical = 16.dp),
+        shape = RoundedCornerShape(12.dp),
+        border = BorderStroke(
+            width = 2.dp,
+            brush = Brush.linearGradient(
+                colors = listOf(
+                    MaterialTheme.colorScheme.primary,
+                    MaterialTheme.colorScheme.secondary
+                )
             )
-        )
+        ),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 12.dp, vertical = 4.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Auto-toggle SELinux on boot",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Spacer(modifier = Modifier.weight(1f))
+Switch(
+    checked = autoToggle,
+    onCheckedChange = {
+        autoToggle = it
+        setAutoToggleEnabled(context, it)
+    },
+    colors = SwitchDefaults.colors(
+        checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
+        checkedTrackColor = MaterialTheme.colorScheme.primary,
+        uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant
+                )
+            )
+        }
     }
 }
 
