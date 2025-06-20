@@ -1,11 +1,14 @@
 package com.maazm7d.quickse.ui.screens
 
+import android.Manifest
+import android.os.Build
+import androidx.activity.result.contract.ActivityResultContracts
 import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.fillMaxSize
@@ -36,6 +39,7 @@ import com.maazm7d.quickse.SelinuxViewModel
 import com.maazm7d.quickse.ui.components.AboutDialog
 import com.maazm7d.quickse.ui.components.ActionButton
 import com.maazm7d.quickse.ui.components.AppBar
+import com.maazm7d.quickse.ui.components.AutoToggleSwitch
 import com.maazm7d.quickse.ui.components.RootWarning
 import com.maazm7d.quickse.ui.components.StatusCard
 import kotlinx.coroutines.delay
@@ -46,7 +50,7 @@ import kotlinx.coroutines.launch
 fun MainScreen() {
     val viewModel: SelinuxViewModel = viewModel()
     val context = LocalContext.current
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()  
     var showAboutDialog by remember { mutableStateOf(false) }
     val currentStatus = uiState.status
     val scope = rememberCoroutineScope()
@@ -106,6 +110,8 @@ fun MainScreen() {
                     onClick = { viewModel.toggleSelinuxMode() }
                 )
                 RootWarning(visible = !uiState.isRootAvailable)
+                AutoToggleSwitch()
+
             }
         }
     )
