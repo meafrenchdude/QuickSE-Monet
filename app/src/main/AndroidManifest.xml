@@ -14,6 +14,16 @@
         android:theme="@style/Theme.SelinuxStatus"
         tools:targetApi="34">
 
+        <meta-data
+            android:name="android.app.shortcuts"
+            android:resource="@xml/shortcuts" />
+
+        <activity
+            android:name=".ShortcutActivity"
+            android:exported="true"
+            android:theme="@style/Theme.SelinuxStatus" />
+
+
         <receiver
             android:name=".BootReceiver"
             android:enabled="true"
