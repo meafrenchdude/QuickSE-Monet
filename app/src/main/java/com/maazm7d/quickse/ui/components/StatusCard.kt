@@ -34,6 +34,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.material.icons.automirrored.filled.Help
+
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -86,7 +88,7 @@ fun StatusCard(currentStatus: String?) {
                     val (icon, color) = when (status.lowercase()) {
                         "enforcing" -> Icons.Filled.Security to MaterialTheme.colorScheme.error
                         "permissive" -> Icons.Filled.Visibility to MaterialTheme.colorScheme.primary
-                        else -> Icons.Filled.Help to MaterialTheme.colorScheme.onSurfaceVariant
+                        else -> Icons.AutoMirrored.Filled.Help to MaterialTheme.colorScheme.onSurfaceVariant
                     }
                     StatusRow(icon = icon, status = status, color = color)
                 }
