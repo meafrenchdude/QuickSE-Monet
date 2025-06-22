@@ -16,7 +16,7 @@ class ShortcutActivity : Activity() {
 
         Toast.makeText(this,
             if (success) "Switched to $newMode"
-            else "Failed to switch SELinux mode",
+            else "Failed to toggle SELinux mode",
             Toast.LENGTH_SHORT).show()
 
         finish() // Close activity immediately

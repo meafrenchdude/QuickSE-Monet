@@ -14,7 +14,7 @@ fun runCommand(command: String): String {
 }
 
 fun getSelinuxStatus(): String {
-    val result = runCommand("su -c getenforce").trim()
+    val result = runCommand("getenforce").trim()
     return when {
         result.equals("Enforcing", true) -> "Enforcing"
         result.equals("Permissive", true) -> "Permissive"
@@ -22,6 +22,6 @@ fun getSelinuxStatus(): String {
     }
 }
 fun setSelinuxMode(mode: String): Boolean {
-    runCommand("su -c setenforce ${if (mode == "Enforcing") 1 else 0}")
+    runCommand("setenforce ${if (mode == "Enforcing") 1 else 0}")
     return getSelinuxStatus() == mode
 }
