@@ -38,7 +38,7 @@ lifecycleScope.launch {
         }
 
         val shortcut = ShortcutInfo.Builder(this@MainActivity, "toggle_selinux")
-            .setShortLabel("Toggle state)
+            .setShortLabel("Toggle state")
             .setLongLabel("Toggle SELinux state")
             .setIcon(Icon.createWithResource(this@MainActivity, R.drawable.ic_launcher))
             .setIntent(shortcutIntent)
