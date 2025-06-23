@@ -18,6 +18,8 @@ import android.os.Build
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.navigation.compose.rememberNavController
+import com.maazm7d.quickse.ui.navigation.AppNavGraph
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,14 +52,19 @@ lifecycleScope.launch {
 
 
         setContent {
-            QuickSETheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    MainScreen()
+    QuickSETheme {
+        val navController = rememberNavController()
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            AppNavGraph(navController = navController)
+           
                 }
             }
         }
-    }
-}
+    } 
+} 
+    
+
+    
