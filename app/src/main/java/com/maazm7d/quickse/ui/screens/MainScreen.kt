@@ -1,5 +1,6 @@
 package com.maazm7d.quickse.ui.screens
 
+import com.maazm7d.quickse.ui.components.ScheduledAutoToggleSwitch
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import android.widget.Toast
@@ -103,8 +104,8 @@ fun MainScreen(navController: NavController) {
                 )
                 RootWarning(visible = !uiState.isRootAvailable)
                 AutoToggleSwitch()
-		Spacer(modifier = Modifier.height(24.dp))
-		KernelInfoCardButton(
+                ScheduledAutoToggleSwitch()
+	           	KernelInfoCardButton(
                     onClick = { navController.navigate("kernel_info") }
 			)
 
