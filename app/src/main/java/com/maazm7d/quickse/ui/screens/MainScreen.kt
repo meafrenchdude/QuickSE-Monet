@@ -1,5 +1,7 @@
 package com.maazm7d.quickse.ui.screens
 
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import android.widget.Toast
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
@@ -30,12 +32,14 @@ import com.maazm7d.quickse.ui.components.AppBar
 import com.maazm7d.quickse.ui.components.AutoToggleSwitch
 import com.maazm7d.quickse.ui.components.RootWarning
 import com.maazm7d.quickse.ui.components.StatusCard
+import androidx.navigation.NavController
 import kotlinx.coroutines.delay
+import com.maazm7d.quickse.ui.components.KernelInfoCardButton
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
+fun MainScreen(navController: NavController) {
     val viewModel: SelinuxViewModel = viewModel()
     val context = LocalContext.current
     val uiState by viewModel.uiState.collectAsState()  
@@ -99,6 +103,10 @@ fun MainScreen() {
                 )
                 RootWarning(visible = !uiState.isRootAvailable)
                 AutoToggleSwitch()
+		Spacer(modifier = Modifier.height(24.dp))
+		KernelInfoCardButton(
+                    onClick = { navController.navigate("kernel_info") }
+			)
 
             }
         }
