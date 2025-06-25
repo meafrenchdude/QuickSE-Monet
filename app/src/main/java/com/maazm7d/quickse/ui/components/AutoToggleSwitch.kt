@@ -73,7 +73,7 @@ fun AutoToggleSwitch() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Auto-toggle SELinux on boot",
+                text = "Auto-toggle on boot",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

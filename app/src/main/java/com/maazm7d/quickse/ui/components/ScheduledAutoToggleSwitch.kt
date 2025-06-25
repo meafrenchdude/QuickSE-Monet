@@ -48,7 +48,7 @@ fun ScheduledAutoToggleSwitch() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Auto-toggle SELinux on schedule",
+                    text = "Auto-toggle on schedule",
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
