@@ -15,6 +15,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SELinux"
+rootProject.name = "QuickSE"
 
 include(":app")
