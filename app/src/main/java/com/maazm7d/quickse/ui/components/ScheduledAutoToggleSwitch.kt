@@ -42,9 +42,11 @@ fun ScheduledAutoToggleSwitch() {
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
-        Column(Modifier.padding(4.dp)) {
+        Column {
             Row(
-                Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 12.dp, vertical = 4.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
@@ -64,7 +66,11 @@ fun ScheduledAutoToggleSwitch() {
                                 { _, hour, minute ->
                                     scheduleOneTimeToggle(context, hour, minute)
                                     timeText = String.format("%02d:%02d", hour, minute)
-                                    Toast.makeText(context, "Toggle scheduled at $timeText", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        context,
+                                        "Toggle scheduled at $timeText",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 },
                                 now.get(Calendar.HOUR_OF_DAY),
                                 now.get(Calendar.MINUTE),
@@ -73,7 +79,11 @@ fun ScheduledAutoToggleSwitch() {
                         } else {
                             cancelToggle(context)
                             timeText = "Not set"
-                            Toast.makeText(context, "Scheduled toggle cancelled", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                context,
+                                "Scheduled toggle cancelled",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     },
                     colors = SwitchDefaults.colors(
@@ -89,18 +99,12 @@ fun ScheduledAutoToggleSwitch() {
                 Text(
                     text = "Scheduled Time: $timeText",
                     style = MaterialTheme.typography.bodySmall,
-                    modifier = Modifier.padding(top = 8.dp),
+                    modifier = Modifier
+                        .padding(start = 12.dp, top = 4.dp, bottom = 8.dp),
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
     }
 }
-
-
-
-
-
-
-
 
