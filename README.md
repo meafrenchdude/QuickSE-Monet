@@ -10,56 +10,38 @@
 
 ## 📱 What is QuickSE?
 
-**QuickSE** is a lightweight, open-source Android app that lets rooted users **view**, **toggle**, and **auto-set SELinux mode** between **Enforcing** and **Permissive**, all in a modern Material You interface.  
-Built using **Jetpack Compose** and Kotlin, it offers a fast and intuitive experience with just the essential tools you need .
+**QuickSE** is a lightweight, open-source Android app that allows rooted users to **view**, **toggle**, and **automatically set** SELinux mode between **Enforcing** and **Permissive**, all in a modern Material You interface.  
+
+Built with **Jetpack Compose** and **Kotlin**, it offers a fast, clean, and intuitive experience with just the essential tools you need.
 
 ---
 
 ## ⚙️ Requirements
 
-- 📱 Android 7.0+ (API 24 or higher)
-- 🔓 Root access 
+- 📱 Android 7.1+ (API 25 or higher)
+- 🔓 Root access (required to change SELinux mode)
 
 ---
 
-## ⚙️ How QuickSE Works
-
-QuickSE uses root access to control SELinux on your Android device:
-
-- 🧩 **Check Status:** Runs `getenforce` to read the current SELinux mode.
-- 🔁 **Toggle Mode:** Executes `setenforce 0` or `setenforce 1` to switch between Permissive and Enforcing.
-- 🧠 **Built with Jetpack Compose:** Offers a modern, responsive UI with Material You styling.
-
-> ⚠️ Requires root access. SELinux mode resets on reboot unless re-applied.
+> ⚠️ SELinux mode resets on reboot unless you enable auto-toggle.
 
 ---
 
-## ⬇️  Download
-- [**Download APK**](https://github.com/maazm7d/QuickSE/releases)
- 
----
+## ⬇️ Download
 
-## 🤝 Contributing
-
-Pull requests are welcome! For major changes, open an issue first to discuss what you'd like to change.
-
-Feel free to fork and submit PRs for:
-
-- Bug fixes
-- UI improvements
-- New features
+- 👉 [**Download Latest APK**](https://github.com/maazm7d/QuickSE/releases)
 
 ---
-
 
 ## 📄 License
 
-Licensed under the [GNU GPLv3](LICENSE).
-You are free to use, modify, and distribute this app under the terms of the license.
+This project is licensed under the [GNU GPLv3](LICENSE).  
+You are free to use, modify, and distribute it under the terms of the license.
 
 ---
 
-
 ## 📬 Contact / Support
 
-Have questions or suggestions? Reach out on Telegram: [@maazm7d](https://t.me/maazm7d)
+💬 Questions or suggestions?  
+Reach out on Telegram: [@maazm7d](https://t.me/maazm7d)
+
