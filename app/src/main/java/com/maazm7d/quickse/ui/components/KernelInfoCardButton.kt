@@ -5,6 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -22,8 +24,8 @@ fun KernelInfoCardButton(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 16.dp),
-        shape = RoundedCornerShape(12.dp),
+            .padding(vertical = 12.dp, horizontal = 16.dp),
+        shape = RoundedCornerShape(16.dp),
         border = BorderStroke(
             width = 2.dp,
             brush = Brush.linearGradient(
@@ -36,26 +38,32 @@ fun KernelInfoCardButton(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
-        Box(
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(56.dp)
                 .clickable(
+                    onClick = onClick,
                     indication = rememberRipple(
                         bounded = true,
                         color = MaterialTheme.colorScheme.primary
                     ),
-                    interactionSource = remember { MutableInteractionSource() },
-                    onClick = onClick
-                ),
-            contentAlignment = Alignment.Center
+                    interactionSource = remember { MutableInteractionSource() }
+                )
+                .padding(horizontal = 20.dp, vertical = 18.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "View Device & Kernel Info",
+                text = "Device and kernel info",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowRight,
+                contentDescription = "Go to device and kernel info",
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }
