@@ -11,7 +11,7 @@ import com.topjohnwu.superuser.Shell
 
 class ToggleReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
-        if (!Shell.rootAccess()) {
+        if (Shell.isAppGrantedRoot() != true) {
             showNotification(context, "SELinux Toggle Failed", "Root access required")
             return
         }

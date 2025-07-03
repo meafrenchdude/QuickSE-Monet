@@ -19,7 +19,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -28,8 +27,6 @@ import androidx.compose.ui.unit.sp
 import java.io.File
 import java.io.FileOutputStream
 
-// Data classes
-
 data class KernelSection(val title: String, val content: String)
 data class CpuCoreInfo(val id: String, val governor: String, val minFreq: String, val maxFreq: String)
 
@@ -37,7 +34,7 @@ data class CpuCoreInfo(val id: String, val governor: String, val minFreq: String
 @Composable
 fun KernelInfoScreen() {
     val info = remember { getKernelInfo() }
-    var selectedTabIndex by remember { mutableStateOf(0) }
+    var selectedTabIndex by remember { mutableIntStateOf(0) }
     val tabs = listOf("Kernel", "Device", "CPU", "Cluster")
     val context = LocalContext.current
 
@@ -177,7 +174,7 @@ fun CpuCoreTable(cores: List<CpuCoreInfo>) {
             Text("Max", fontWeight = FontWeight.Bold, fontFamily = FontFamily.Monospace)
         }
 
-        Divider(Modifier.padding(vertical = 4.dp))
+        HorizontalDivider(Modifier.padding(vertical = 4.dp))
 
         cores.forEach { core ->
             Row(
@@ -191,7 +188,7 @@ fun CpuCoreTable(cores: List<CpuCoreInfo>) {
                 Text(core.minFreq, fontFamily = FontFamily.Monospace)
                 Text(core.maxFreq, fontFamily = FontFamily.Monospace)
             }
-            Divider()
+            HorizontalDivider()
         }
     }
 }
@@ -219,7 +216,7 @@ fun ExpandableCard(title: String, content: String) {
                 color = MaterialTheme.colorScheme.primary,
                 fontFamily = FontFamily.Monospace
             )
-            Divider(
+            HorizontalDivider(
                 modifier = Modifier.padding(vertical = 8.dp),
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
             )
