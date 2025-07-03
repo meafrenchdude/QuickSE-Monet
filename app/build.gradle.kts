@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.maazm7d.quickse"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.maazm7d.quickse"
