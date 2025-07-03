@@ -1,5 +1,6 @@
 package com.maazm7d.quickse.ui.components
 
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -44,13 +45,10 @@ fun KernelInfoCardButton(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable(
-                    onClick = onClick,
-                    indication = rememberRipple(
-                        bounded = true,
-                        color = MaterialTheme.colorScheme.primary
-                    ),
-                    interactionSource = remember { MutableInteractionSource() }
-                )
+    onClick = onClick,
+    indication = LocalIndication.current,
+    interactionSource = remember { MutableInteractionSource() }
+)
                 .padding(horizontal = 20.dp, vertical = 18.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
