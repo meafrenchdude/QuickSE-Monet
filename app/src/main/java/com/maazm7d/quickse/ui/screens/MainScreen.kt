@@ -114,9 +114,9 @@ fun MainScreen(navController: NavController) {
     )
 
     if (showAboutDialog) {
-        AboutDialog(
-            versionName = versionName,
-            onDismiss = { showAboutDialog = false }
-        )
+    AboutDialog(
+        versionName = versionName ?: "Unknown", 
+        onDismiss = { showAboutDialog = false }
+    )
     }
 }
