@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.maazm7d.quickse"
         minSdk = 25
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 3
         versionName = "3.2.1"
     }
