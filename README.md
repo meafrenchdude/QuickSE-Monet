@@ -1,10 +1,19 @@
-# ⚡ QuickSE
+<p align="center">
+  <img src="assets/quickse_icon.png" alt="QuickSE Icon" width="100"/>
+</p>
 
-> 🔐 Instantly check and toggle SELinux status on rooted Android devices.
+<h1 align="center">⚡ QuickSE</h1>
 
-![GitHub stars](https://img.shields.io/github/stars/maazm7d/QuickSE?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/maazm7d/QuickSE?style=for-the-badge)
-![GitHub license](https://img.shields.io/github/license/maazm7d/QuickSE?style=for-the-badge)
+<p align="center">
+  🔐 <i>Instantly check & toggle SELinux status on rooted Android devices.</i><br>
+  <code>Jetpack Compose</code> · <code>Kotlin</code> · <code>Material You</code>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/stars/maazm7d/QuickSE?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/forks/maazm7d/QuickSE?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/license/maazm7d/QuickSE?style=for-the-badge"/>
+</p>
 
 ---
 
