@@ -78,19 +78,26 @@ fun AutoToggleSwitch() {
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.weight(1f))
-Switch(
-    checked = autoToggle,
-    onCheckedChange = {
-        autoToggle = it
-        setAutoToggleEnabled(context, it)
-    },
-    colors = SwitchDefaults.colors(
-        checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
-        checkedTrackColor = MaterialTheme.colorScheme.primary,
-        uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
-        uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant
-                )
-            )
+   Switch(
+       checked = autoToggle,
+       onCheckedChange = {
+           autoToggle = it
+           setAutoToggleEnabled(context, it)
+
+           val message = if (it) "Auto-toggle enabled" else "Auto-toggle disabled"
+           Toast.makeText(
+               context,
+               message,
+               Toast.LENGTH_SHORT
+           ).show()
+       },
+       colors = SwitchDefaults.colors(
+           checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
+           checkedTrackColor = MaterialTheme.colorScheme.primary,
+           uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+           uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant
+              )
+           )
         }
     }
 }
