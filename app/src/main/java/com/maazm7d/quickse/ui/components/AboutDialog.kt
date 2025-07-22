@@ -1,38 +1,90 @@
 package com.maazm7d.quickse.ui.components
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun AboutDialog(versionName: String, onDismiss: () -> Unit) {
+fun AboutDialog(
+    versionName: String,
+    onDismiss: () -> Unit,
+    onOpenGitHub: () -> Unit
+) {
     AlertDialog(
         onDismissRequest = onDismiss,
         title = {
-            Text(
-                "About QuickSE",
-                style = MaterialTheme.typography.titleMedium
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Spacer(Modifier.width(12.dp))
+                Text(
+                    text = "About QuickSE",
+                    style = MaterialTheme.typography.headlineSmall,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+            }
         },
         text = {
-            Column(modifier = Modifier.padding(vertical = 8.dp)) {
-                Text("Version: $versionName")
-                Spacer(Modifier.height(8.dp))
-                Text("Developer: maazm7d")
-                Spacer(Modifier.height(16.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .verticalScroll(rememberScrollState())
+                    .padding(16.dp)
+            ) {
                 Text(
-                    "This app shows current SELinux status and allows switching between modes.",
-                    style = MaterialTheme.typography.bodyLarge
+                    "A modern SELinux mode manager.",
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Spacer(Modifier.height(8.dp))
+                LabeledText(label = "App version", value = versionName)
+                LabeledText(label = "Developer", value = "maazm7d")
+                LabeledText(label = "Status", value = "Open Source")
+                Spacer(Modifier.height(10.dp))
+                HorizontalDivider()
+                Spacer(Modifier.height(10.dp))
+                Text(
+                    "Links & Credits",
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.primary
+                )
+                Spacer(Modifier.height(8.dp))
+                TextButton(onClick = onOpenGitHub) {
+                    Text("GitHub Repository – github.com/maazm7d/QuickSE")
+                }
+                Spacer(Modifier.height(14.dp))
+                Text(
+                    "License: GPL-3.0\n(c) 2025 QuickSE",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         },
         confirmButton = {}
     )
+}
+
+@Composable
+private fun LabeledText(label: String, value: String) {
+    Row(
+        modifier = Modifier.padding(vertical = 2.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            "$label: ",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Text(
+            value,
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+    }
 }

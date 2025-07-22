@@ -3,6 +3,9 @@ package com.maazm7d.quickse.ui.screens
 import com.maazm7d.quickse.ui.components.ScheduledAutoToggleSwitch
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import android.content.Intent
+import android.net.Uri
+import androidx.core.net.toUri
 import android.widget.Toast
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
@@ -37,6 +40,7 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.delay
 import com.maazm7d.quickse.ui.components.KernelInfoCardButton
 import kotlinx.coroutines.launch
+import androidx.core.net.toUri
 
 @OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -112,11 +116,18 @@ fun MainScreen(navController: NavController) {
             }
         }
     )
-
     if (showAboutDialog) {
-    AboutDialog(
-        versionName = versionName ?: "Unknown", 
-        onDismiss = { showAboutDialog = false }
-    )
+        AboutDialog(
+            versionName = versionName ?: "Unknown",
+            onDismiss = { showAboutDialog = false },
+            onOpenGitHub = {
+                val urlIntent = Intent(Intent.ACTION_VIEW,
+                    "https://github.com/maazm7d/QuickSE".toUri())
+                context.startActivity(urlIntent)
+            }
+        )
     }
+
+
 }
+
