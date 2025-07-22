@@ -7,11 +7,8 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.res.stringResource
-import com.maazm7d.quickse.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +36,7 @@ fun AppBar(
             ) {
                 Icon(
                     imageVector = Icons.Default.Info,
-                    contentDescription = null, // already added in semantics
+                    contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary
                 )
             }
@@ -64,7 +61,7 @@ fun AppBar(
                 } else {
                     Icon(
                         imageVector = Icons.Default.Refresh,
-                        contentDescription = null, // Already defined in semantics
+                        contentDescription = null,
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
