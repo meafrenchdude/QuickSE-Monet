@@ -13,4 +13,9 @@
     <string name="checking_status">Checking status</string>
     <string name="root_warning_title">Rootless Behavior Detected</string>
     <string name="warning_icon_content_description">Warning</string>
+    <string name="scheduled_toggle_label">Auto-toggle on schedule</string>
+    <string name="toggle_cancelled">Scheduled toggle cancelled</string>
+    <string name="toggle_scheduled_format">Toggle scheduled at %1$s</string>
+    <string name="scheduled_time_prefix">Scheduled Time: %1$s</string>
+    <string name="time_not_set">Not set</string>
 </resources>
