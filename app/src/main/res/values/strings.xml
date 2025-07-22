@@ -11,4 +11,6 @@
     <string name="auto_toggle_disabled">Auto-toggle disabled</string>
     <string name="notification_permission_denied">Notification permission denied</string>
     <string name="checking_status">Checking status</string>
+    <string name="root_warning_title">Rootless Behavior Detected</string>
+    <string name="warning_icon_content_description">Warning</string>
 </resources>
