@@ -6,4 +6,8 @@
     <string name="warning_content_description">Warning</string>
     <string name="shortcut_long_label">Toggle SELinux Mode</string>
     <string name="shortcut_short_label">Toggle SELinux</string>
+    <string name="auto_toggle_label">Auto-toggle on boot</string>
+    <string name="auto_toggle_enabled">Auto-toggle enabled</string>
+    <string name="auto_toggle_disabled">Auto-toggle disabled</string>
+    <string name="notification_permission_denied">Notification permission denied</string>
 </resources>

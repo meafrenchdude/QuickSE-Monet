@@ -1,33 +1,35 @@
 package com.maazm7d.quickse.ui.components
 
-import android.widget.Toast
-import androidx.compose.material3.Switch
-import androidx.compose.material3.Text
-import androidx.compose.material3.SwitchDefaults
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import com.maazm7d.quickse.util.isAutoToggleEnabled
-import com.maazm7d.quickse.util.setAutoToggleEnabled
-import androidx.compose.material3.MaterialTheme
 import android.Manifest
 import android.os.Build
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
+import androidx.compose.material3.CardDefaults.cardColors
+import androidx.compose.material3.CardDefaults.cardElevation
+import androidx.compose.material3.SwitchDefaults.colors
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.shape.RoundedCornerShape
+import com.maazm7d.quickse.R
+import com.maazm7d.quickse.util.isAutoToggleEnabled
+import com.maazm7d.quickse.util.setAutoToggleEnabled
 import androidx.compose.ui.graphics.Brush
 
 @Composable
 fun AutoToggleSwitch() {
     val context = LocalContext.current
-    var autoToggle by remember { mutableStateOf(isAutoToggleEnabled(context)) }
+    var autoToggle by rememberSaveable { mutableStateOf(isAutoToggleEnabled(context)) }
 
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -35,7 +37,7 @@ fun AutoToggleSwitch() {
         if (!isGranted) {
             Toast.makeText(
                 context,
-                "Notification permission denied",
+                context.getString(R.string.notification_permission_denied),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -61,44 +63,45 @@ fun AutoToggleSwitch() {
                 )
             )
         ),
-        colors = CardDefaults.cardColors(
+        colors = cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
+        elevation = cardElevation(defaultElevation = 6.dp)
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 12.dp, vertical = 4.dp),
+                .padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Auto-toggle on boot",
+                text = stringResource(R.string.auto_toggle_label),
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Spacer(modifier = Modifier.weight(1f))
-   Switch(
-       checked = autoToggle,
-       onCheckedChange = {
-           autoToggle = it
-           setAutoToggleEnabled(context, it)
-
-           val message = if (it) "Auto-toggle enabled" else "Auto-toggle disabled"
-           Toast.makeText(
-               context,
-               message,
-               Toast.LENGTH_SHORT
-           ).show()
-       },
-       colors = SwitchDefaults.colors(
-           checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
-           checkedTrackColor = MaterialTheme.colorScheme.primary,
-           uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
-           uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant
-              )
-           )
+            Switch(
+                checked = autoToggle,
+                onCheckedChange = {
+                    autoToggle = it
+                    setAutoToggleEnabled(context, it)
+                    val message = if (it) {
+                        context.getString(R.string.auto_toggle_enabled)
+                    } else {
+                        context.getString(R.string.auto_toggle_disabled)
+                    }
+                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                },
+                modifier = Modifier.semantics {
+                    contentDescription = context.getString(R.string.auto_toggle_label)
+                },
+                colors = colors(
+                    checkedThumbColor = MaterialTheme.colorScheme.onPrimary,
+                    checkedTrackColor = MaterialTheme.colorScheme.primary,
+                    uncheckedThumbColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    uncheckedTrackColor = MaterialTheme.colorScheme.surfaceVariant
+                )
+            )
         }
     }
 }
-
