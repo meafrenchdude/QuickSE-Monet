@@ -10,4 +10,5 @@
     <string name="auto_toggle_enabled">Auto-toggle enabled</string>
     <string name="auto_toggle_disabled">Auto-toggle disabled</string>
     <string name="notification_permission_denied">Notification permission denied</string>
+    <string name="checking_status">Checking status</string>
 </resources>
