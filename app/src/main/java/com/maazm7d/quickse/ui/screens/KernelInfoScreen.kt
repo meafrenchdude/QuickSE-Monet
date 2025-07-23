@@ -35,7 +35,7 @@ fun KernelInfoScreen() {
         "System Uptime" to readFile("/proc/uptime"),
         "System Load Average" to readFile("/proc/loadavg"),
         "CPU Information" to readFile("/proc/cpuinfo"),
-        "Memory Information" to readFile("/proc/meminfo"),
+        "Memory Information" to readMemInfoMB(),
         "SELinux Status" to readShell("getenforce"),
         "Kernel Logs (Tail)" to readShell("dmesg | tail -n 100")
     )
@@ -153,6 +153,19 @@ fun ExpandableKernelCard(title: String, fullText: String, context: Context) {
             )
         }
     }
+}
+
+fun readMemInfoMB(): String = try {
+    File("/proc/meminfo")
+        .readLines()
+        .joinToString("\n") { line ->
+            val parts = line.trim().split(Regex("\\s+"))
+            if (parts.size >= 2 && parts[1].toIntOrNull() != null)
+                "${parts[0]} ${"%.1f".format(parts[1].toFloat() / 1024)} MB"
+            else line
+        }
+} catch (e: Exception) {
+    "⚠️ Couldn't read /proc/meminfo: ${e.message}"
 }
 
 fun highlightQueryText(fullText: String, query: String): AnnotatedString {
