@@ -53,7 +53,7 @@ fun KernelInfoCardButton(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Device and kernel info",
+                text = "Kernel inspector",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
