@@ -28,7 +28,6 @@ fun KernelInfoScreen() {
     val kernelEntries = listOf(
         "Kernel Information" to readShell("uname -a"),
         "Kernel Version" to readFile("/proc/version"),
-        "Boot Parameters" to readFile("/proc/cmdline"),
         "Loaded Kernel Modules" to readFile("/proc/modules"),
         "Kernel Symbols" to readFile("/proc/kallsyms"),
         "Kernel Configuration" to readShell("zcat /proc/config.gz"),
