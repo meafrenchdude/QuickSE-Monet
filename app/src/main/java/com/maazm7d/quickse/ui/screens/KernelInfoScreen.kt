@@ -200,7 +200,7 @@ fun readMemInfoMB(): String = try {
         .joinToString("\n") { line ->
             val parts = line.trim().split(Regex("\\s+"))
             if (parts.size >= 2 && parts[1].toIntOrNull() != null)
-                "${parts[0]} ${"%.1f".format(parts[1].toFloat() / 1024)} MB"
+                "${parts[0]} ${parts[1]} kB (${String.format("%.1f", parts[1].toFloat() / 1024)} MB)"
             else line
         }
 } catch (e: Exception) {
