@@ -28,7 +28,7 @@ fun KernelInfoScreen() {
     val kernelEntries = listOf(
         "Kernel Information" to readShell("uname -a"),
         "Kernel Version" to readFile("/proc/version"),
-        "Loaded Kernel Modules" to readFile("/proc/modules"),
+        "Loaded Kernel Modules" to readModules(),
         "Kernel Symbols" to readFile("/proc/kallsyms"),
         "Kernel Configuration" to readShell("zcat /proc/config.gz"),
         "System Uptime" to readFile("/proc/uptime"),
@@ -152,6 +152,14 @@ fun ExpandableKernelCard(title: String, fullText: String, context: Context) {
             )
         }
     }
+}
+
+fun readModules(): String = try {
+    val content = File("/proc/modules").readText().trim()
+    if (content.isEmpty()) "No loaded kernel modules found"
+    else content
+} catch (e: Exception) {
+    "⚠️ Cannot read /proc/modules: ${e.message}"
 }
 
 fun readMemInfoMB(): String = try {
