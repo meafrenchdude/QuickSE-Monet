@@ -31,8 +31,8 @@ fun KernelInfoScreen() {
         "Loaded Kernel Modules" to readModules(),
         "Kernel Symbols" to readFile("/proc/kallsyms"),
         "Kernel Configuration" to readShell("zcat /proc/config.gz"),
-        "System Uptime" to readFile("/proc/uptime"),
-        "System Load Average" to readFile("/proc/loadavg"),
+        "System Uptime" to systemUptime(readFile("/proc/uptime")),
+        "System Load Average" to systemLoadAvg(readFile("/proc/loadavg")),
         "CPU Information" to readFile("/proc/cpuinfo"),
         "Memory Information" to readMemInfoMB(),
         "SELinux Status" to readShell("getenforce"),
@@ -151,6 +151,38 @@ fun ExpandableKernelCard(title: String, fullText: String, context: Context) {
                 modifier = Modifier.fillMaxWidth()
             )
         }
+    }
+}
+
+fun systemUptime(raw: String): String {
+    return try {
+        val uptimeSeconds = raw.split(" ")[0].toDoubleOrNull() ?: return raw
+        val hours = (uptimeSeconds / 3600).toInt()
+        val minutes = ((uptimeSeconds % 3600) / 60).toInt()
+        val seconds = (uptimeSeconds % 60).toInt()
+
+        "🕓 Up for ${hours}h ${minutes}m ${seconds}s"
+    } catch (e: Exception) {
+        "⚠️ Invalid uptime data"
+    }
+}
+
+fun systemLoadAvg(raw: String): String {
+    val parts = raw.split(" ")
+    return if (parts.size >= 5) {
+        val one = parts[0]
+        val five = parts[1]
+        val fifteen = parts[2]
+        val running = parts[3]
+        val pid = parts[4]
+
+        """
+        📊 Load Avg (1/5/15 min): $one / $five / $fifteen
+        ⚙️ Running Processes: $running
+        🔢 Last PID: $pid
+        """.trimIndent()
+    } else {
+        "⚠️ Invalid loadavg data"
     }
 }
 
