@@ -109,9 +109,20 @@ fun MainScreen(navController: NavController) {
                 RootWarning(visible = !uiState.isRootAvailable)
                 AutoToggleSwitch()
                 ScheduledAutoToggleSwitch()
-	           	KernelInfoCardButton(
-                    onClick = { navController.navigate("kernel_info") }
-			)
+	        KernelInfoCardButton(
+                  onClick = {
+                    if (currentStatus == "Enforcing") {
+                     Toast.makeText(
+                       context,
+                         "Please switch to permissive mode to use this feature.",
+                       Toast.LENGTH_SHORT
+                ).show()
+                  } else {
+                navController.navigate("kernel_info")
+        }
+    }
+)
+
 
             }
         }
