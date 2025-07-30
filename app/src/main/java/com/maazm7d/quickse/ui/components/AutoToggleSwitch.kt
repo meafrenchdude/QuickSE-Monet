@@ -83,14 +83,16 @@ fun AutoToggleSwitch() {
             Switch(
                 checked = autoToggle,
                 onCheckedChange = {
-                    autoToggle = it
-                    setAutoToggleEnabled(context, it)
-                    val message = if (it) {
-                        context.getString(R.string.auto_toggle_enabled)
-                    } else {
-                        context.getString(R.string.auto_toggle_disabled)
+                    if (autoToggle != it) {
+                        autoToggle = it
+                        setAutoToggleEnabled(context, it)
+                        val message = if (it) {
+                            context.getString(R.string.auto_toggle_enabled)
+                        } else {
+                            context.getString(R.string.auto_toggle_disabled)
+                        }
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                     }
-                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                 },
                 modifier = Modifier.semantics {
                     contentDescription = context.getString(R.string.auto_toggle_label)
