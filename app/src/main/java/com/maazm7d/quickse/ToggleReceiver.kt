@@ -8,11 +8,14 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import com.topjohnwu.superuser.Shell
+import com.maazm7d.quickse.util.isNotificationEnabled
 
 class ToggleReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         if (Shell.isAppGrantedRoot() != true) {
-            showNotification(context, "SELinux Toggle Failed", "Root access required")
+            if (isNotificationEnabled(context)) {
+                showNotification(context, "SELinux Toggle Failed", "Root access required")
+            }
             return
         }
 
@@ -21,7 +24,10 @@ class ToggleReceiver : BroadcastReceiver() {
         Shell.cmd("setenforce $new").exec()
 
         val resultText = if (new == "0") "Permissive" else "Enforcing"
-        showNotification(context, "SELinux Toggled", "Now: $resultText")
+
+        if (isNotificationEnabled(context)) {
+            showNotification(context, "SELinux Toggled", "Now: $resultText")
+        }
     }
 
     private fun showNotification(context: Context, title: String, message: String) {

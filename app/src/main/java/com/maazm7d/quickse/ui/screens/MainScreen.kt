@@ -33,6 +33,7 @@ import com.maazm7d.quickse.ui.components.StatusCard
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
 import com.maazm7d.quickse.ui.components.KernelInfoCardButton
+import com.maazm7d.quickse.ui.components.NotificationToggleSwitch
 import kotlinx.coroutines.launch
 
 @Composable
@@ -100,6 +101,7 @@ fun MainScreen(navController: NavController) {
                 )
                 AutoToggleSwitch()
                 ScheduledAutoToggleSwitch()
+                NotificationToggleSwitch()
 	        KernelInfoCardButton(
                   onClick = {
                     if (currentStatus == "Enforcing") {

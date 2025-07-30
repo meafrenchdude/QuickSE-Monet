@@ -3,9 +3,13 @@ package com.maazm7d.quickse
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import com.maazm7d.quickse.util.isAutoToggleEnabled
+import com.maazm7d.quickse.util.isNotificationEnabled
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -57,6 +61,18 @@ class BootReceiver : BroadcastReceiver() {
     }
 
     private fun showNotification(context: Context, message: String) {
+        if (!isNotificationEnabled(context)) return
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val permission = ContextCompat.checkSelfPermission(
+                context,
+                android.Manifest.permission.POST_NOTIFICATIONS
+            )
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                return
+            }
+        }
+
         val channelId = "quickse_toggle_channel"
         val builder = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.drawable.ic_stat_qse)
