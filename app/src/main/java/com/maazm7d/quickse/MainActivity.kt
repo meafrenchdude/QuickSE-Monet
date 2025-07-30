@@ -23,8 +23,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-lifecycleScope.launch {
-    delay(3000) 
+lifecycleScope.launch { 
     val currentStatus = getSelinuxStatus()
     if (currentStatus == "Unknown") return@launch
 
