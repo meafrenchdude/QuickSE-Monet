@@ -15,6 +15,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
+import com.maazm7d.quickse.R
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun KernelInfoCardButton(
@@ -24,8 +26,8 @@ fun KernelInfoCardButton(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 12.dp, horizontal = 16.dp),
-        shape = RoundedCornerShape(16.dp),
+            .padding(vertical = 12.dp),
+        shape = RoundedCornerShape(12.dp),
         border = BorderStroke(
             width = 2.dp,
             brush = Brush.linearGradient(
@@ -48,18 +50,18 @@ fun KernelInfoCardButton(
     indication = LocalIndication.current,
     interactionSource = remember { MutableInteractionSource() }
 )
-                .padding(horizontal = 20.dp, vertical = 18.dp),
+                .padding(horizontal = 20.dp, vertical = 24.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Kernel inspector",
+                text = stringResource(R.string.kernel_inspector),
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                contentDescription = "Go to device and kernel info",
+                contentDescription = stringResource(R.string.kernel_inspector_desc),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }

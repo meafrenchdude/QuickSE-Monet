@@ -19,4 +19,6 @@
     <string name="scheduled_time_prefix">Scheduled Time: %1$s</string>
     <string name="time_not_set">Not set</string>
     <string name="selinux_status_title">Current SELinux status</string>
+    <string name="kernel_inspector">Kernel inspector</string>
+    <string name="kernel_inspector_desc">Go to device and kernel info</string>
 </resources>
