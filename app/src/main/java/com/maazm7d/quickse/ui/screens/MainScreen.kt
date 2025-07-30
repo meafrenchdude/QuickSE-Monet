@@ -1,13 +1,9 @@
 package com.maazm7d.quickse.ui.screens
 
 import com.maazm7d.quickse.ui.components.ScheduledAutoToggleSwitch
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import android.content.Intent
-import android.net.Uri
 import androidx.core.net.toUri
 import android.widget.Toast
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.runtime.setValue
@@ -15,7 +11,6 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -34,15 +29,12 @@ import com.maazm7d.quickse.ui.components.AboutDialog
 import com.maazm7d.quickse.ui.components.ActionButton
 import com.maazm7d.quickse.ui.components.AppBar
 import com.maazm7d.quickse.ui.components.AutoToggleSwitch
-import com.maazm7d.quickse.ui.components.RootWarning
 import com.maazm7d.quickse.ui.components.StatusCard
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
 import com.maazm7d.quickse.ui.components.KernelInfoCardButton
 import kotlinx.coroutines.launch
-import androidx.core.net.toUri
 
-@OptIn(ExperimentalAnimationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(navController: NavController) {
     val viewModel: SelinuxViewModel = viewModel()
@@ -106,7 +98,6 @@ fun MainScreen(navController: NavController) {
                     isRootAvailable = uiState.isRootAvailable,
                     onClick = { viewModel.toggleSelinuxMode() }
                 )
-                RootWarning(visible = !uiState.isRootAvailable)
                 AutoToggleSwitch()
                 ScheduledAutoToggleSwitch()
 	        KernelInfoCardButton(

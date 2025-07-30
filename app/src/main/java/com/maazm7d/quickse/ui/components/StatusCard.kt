@@ -1,7 +1,6 @@
 package com.maazm7d.quickse.ui.components
 
 import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
@@ -12,7 +11,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.automirrored.filled.Help
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -74,16 +72,16 @@ fun StatusCard(currentStatus: String?) {
                 if (status == null) {
                     LoadingIndicator()
                 } else {
-                    val (icon, color) = when (status.lowercase()) {
-                        "enforcing" -> Icons.Filled.Security to MaterialTheme.colorScheme.error
-                        "permissive" -> Icons.Filled.Visibility to MaterialTheme.colorScheme.primary
-                        else -> Icons.AutoMirrored.Filled.Help to MaterialTheme.colorScheme.onSurfaceVariant
+                    val (icon, color, displayText) = when (status.lowercase(Locale.ROOT)) {
+                        "enforcing" -> Triple(Icons.Filled.Security, MaterialTheme.colorScheme.error, "Enforcing")
+                        "permissive" -> Triple(Icons.Filled.Visibility, MaterialTheme.colorScheme.primary, "Permissive")
+                        else -> Triple(
+                            null,
+                            MaterialTheme.colorScheme.onSurfaceVariant,
+                            stringResource(R.string.root_not_available)
+                        )
                     }
-                    StatusRow(icon = icon, status = status.replaceFirstChar {
-                        if (it.isLowerCase()) it.titlecase(
-                            Locale.ROOT
-                        ) else it.toString()
-                    }, color = color)
+                    StatusRow(icon = icon, status = displayText, color = color)
                 }
             }
         }
@@ -91,15 +89,17 @@ fun StatusCard(currentStatus: String?) {
 }
 
 @Composable
-fun StatusRow(icon: ImageVector, status: String, color: Color) {
+fun StatusRow(icon: ImageVector?, status: String, color: Color) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Icon(
-            imageVector = icon,
-            contentDescription = status,
-            tint = color,
-            modifier = Modifier.size(32.dp)
-        )
-        Spacer(modifier = Modifier.width(12.dp))
+        if (icon != null) {
+            Icon(
+                imageVector = icon,
+                contentDescription = status,
+                tint = color,
+                modifier = Modifier.size(32.dp)
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+        }
         Text(
             text = status,
             style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
