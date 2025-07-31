@@ -52,7 +52,7 @@ fun AutoToggleSwitch() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 16.dp),
+            .padding(vertical = 6.dp),
         shape = RoundedCornerShape(12.dp),
         border = BorderStroke(
             width = 2.dp,
@@ -71,7 +71,7 @@ fun AutoToggleSwitch() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 12.dp),
+                .padding(horizontal = 12.dp, vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(

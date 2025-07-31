@@ -26,7 +26,7 @@ fun KernelInfoCardButton(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 16.dp),
+            .padding(vertical = 6.dp),
         shape = RoundedCornerShape(12.dp),
         border = BorderStroke(
             width = 2.dp,
@@ -50,7 +50,7 @@ fun KernelInfoCardButton(
     indication = LocalIndication.current,
     interactionSource = remember { MutableInteractionSource() }
 )
-                .padding(horizontal = 20.dp, vertical = 24.dp),
+                .padding(horizontal = 16.dp, vertical = 18.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {

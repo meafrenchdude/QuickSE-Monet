@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 fun AboutDialog(
     versionName: String,
     onDismiss: () -> Unit,
-    onOpenGitHub: () -> Unit
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -48,16 +47,6 @@ fun AboutDialog(
                 LabeledText(label = "Status", value = "Open Source")
                 Spacer(Modifier.height(10.dp))
                 HorizontalDivider()
-                Spacer(Modifier.height(10.dp))
-                Text(
-                    "Links & Credits",
-                    style = MaterialTheme.typography.titleSmall,
-                    color = MaterialTheme.colorScheme.primary
-                )
-                Spacer(Modifier.height(8.dp))
-                TextButton(onClick = onOpenGitHub) {
-                    Text("GitHub Repository – github.com/maazm7d/QuickSE")
-                }
                 Spacer(Modifier.height(14.dp))
                 Text(
                     "License: GPL-3.0\n(c) 2025 QuickSE",

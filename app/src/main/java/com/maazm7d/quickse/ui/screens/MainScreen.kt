@@ -1,8 +1,6 @@
 package com.maazm7d.quickse.ui.screens
 
 import com.maazm7d.quickse.ui.components.ScheduledAutoToggleSwitch
-import android.content.Intent
-import androidx.core.net.toUri
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -35,12 +33,16 @@ import kotlinx.coroutines.delay
 import com.maazm7d.quickse.ui.components.KernelInfoCardButton
 import com.maazm7d.quickse.ui.components.NotificationToggleSwitch
 import kotlinx.coroutines.launch
+import android.content.Intent
+import android.net.Uri
+import com.maazm7d.quickse.ui.components.FooterLinks
+import androidx.core.net.toUri
 
 @Composable
 fun MainScreen(navController: NavController) {
     val viewModel: SelinuxViewModel = viewModel()
     val context = LocalContext.current
-    val uiState by viewModel.uiState.collectAsState()  
+    val uiState by viewModel.uiState.collectAsState()
     var showAboutDialog by remember { mutableStateOf(false) }
     val currentStatus = uiState.status
     val scope = rememberCoroutineScope()
@@ -66,7 +68,7 @@ fun MainScreen(navController: NavController) {
         }
     }
 
-    Scaffold(     
+    Scaffold(
         topBar = {
             AppBar(
                 onAboutClick = { showAboutDialog = true },
@@ -102,21 +104,35 @@ fun MainScreen(navController: NavController) {
                 AutoToggleSwitch()
                 ScheduledAutoToggleSwitch()
                 NotificationToggleSwitch()
-	        KernelInfoCardButton(
-                  onClick = {
-                    if (currentStatus == "Enforcing") {
-                     Toast.makeText(
-                       context,
-                         "Please switch to permissive mode to use this feature.",
-                       Toast.LENGTH_SHORT
-                ).show()
-                  } else {
-                navController.navigate("kernel_info")
-        }
-    }
-)
-
-
+                KernelInfoCardButton(
+                    onClick = {
+                        if (currentStatus == "Enforcing") {
+                            Toast.makeText(
+                                context,
+                                "Please switch to permissive mode to use this feature.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            navController.navigate("kernel_info")
+                        }
+                    }
+                )
+                FooterLinks(
+                    onGitHubClick = {
+                        val intent = Intent(
+                            Intent.ACTION_VIEW,
+                            "https://github.com/maazm7d/QuickSE".toUri()
+                        )
+                        context.startActivity(intent)
+                    },
+                    onTelegramClick = {
+                        val intent = Intent(
+                            Intent.ACTION_VIEW,
+                            "https://t.me/maazm7d".toUri()
+                        )
+                        context.startActivity(intent)
+                    }
+                )
             }
         }
     )
@@ -124,14 +140,7 @@ fun MainScreen(navController: NavController) {
         AboutDialog(
             versionName = versionName ?: "Unknown",
             onDismiss = { showAboutDialog = false },
-            onOpenGitHub = {
-                val urlIntent = Intent(Intent.ACTION_VIEW,
-                    "https://github.com/maazm7d/QuickSE".toUri())
-                context.startActivity(urlIntent)
-            }
         )
     }
-
-
 }
 
