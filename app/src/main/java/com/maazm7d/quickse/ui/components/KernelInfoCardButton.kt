@@ -26,7 +26,7 @@ fun KernelInfoCardButton(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 12.dp),
+            .padding(vertical = 16.dp),
         shape = RoundedCornerShape(12.dp),
         border = BorderStroke(
             width = 2.dp,
@@ -40,7 +40,7 @@ fun KernelInfoCardButton(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Row(
             modifier = Modifier
