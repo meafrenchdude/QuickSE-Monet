@@ -14,16 +14,17 @@ import android.content.pm.ShortcutInfo
 import android.content.pm.ShortcutManager
 import android.graphics.drawable.Icon
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import androidx.navigation.compose.rememberNavController
 import com.maazm7d.quickse.ui.navigation.AppNavGraph
+import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-lifecycleScope.launch { 
+        lifecycleScope.launch {
     val currentStatus = getSelinuxStatus()
     if (currentStatus == "Unknown") return@launch
 
