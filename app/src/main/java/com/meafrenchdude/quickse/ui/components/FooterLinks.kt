@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.graphics.Color
+import com.meafrenchdude.quickse.R
 
 @Composable
 fun FooterLinks(

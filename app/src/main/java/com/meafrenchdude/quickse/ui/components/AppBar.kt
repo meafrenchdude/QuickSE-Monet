@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBar(
-    title: String = "QuickSE",
+    title: String = "QuickSE: Monet",
     isRefreshing: Boolean,
     onAboutClick: () -> Unit,
     onRefreshClick: () -> Unit

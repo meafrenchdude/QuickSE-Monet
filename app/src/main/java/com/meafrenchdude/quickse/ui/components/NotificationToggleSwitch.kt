@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
 import com.meafrenchdude.quickse.util.setNotificationEnabled
 import com.meafrenchdude.quickse.util.isNotificationEnabled
+import com.meafrenchdude.quickse.R
 
 @Composable
 fun NotificationToggleSwitch() {

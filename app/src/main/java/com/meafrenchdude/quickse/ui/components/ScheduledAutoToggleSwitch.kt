@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Brush
 import com.meafrenchdude.quickse.util.cancelToggle
 import com.meafrenchdude.quickse.util.scheduleOneTimeToggle
+import com.meafrenchdude.quickse.R
 import java.util.*
 
 @Composable

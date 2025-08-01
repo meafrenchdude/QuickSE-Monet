@@ -1,5 +1,6 @@
 package com.meafrenchdude.quickse.ui.components
 
+import com.meafrenchdude.quickse.R
 import android.Manifest
 import android.os.Build
 import android.widget.Toast
