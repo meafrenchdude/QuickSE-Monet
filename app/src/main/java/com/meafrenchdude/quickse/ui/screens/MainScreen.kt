@@ -123,14 +123,14 @@ fun MainScreen(navController: NavController) {
                     onGitHubClick = {
                         val intent = Intent(
                             Intent.ACTION_VIEW,
-                            "https://github.com/maazm7d/QuickSE".toUri()
+                            "https://github.com/meafrenchdude/QuickSE-Monet".toUri()
                         )
                         context.startActivity(intent)
                     },
                     onTelegramClick = {
                         val intent = Intent(
                             Intent.ACTION_VIEW,
-                            "https://t.me/maazm7d".toUri()
+                            "https://t.me/QuickSE_Monet".toUri()
                         )
                         context.startActivity(intent)
                     }

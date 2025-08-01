@@ -22,9 +22,11 @@ private val DarkColorScheme = darkColorScheme(
     tertiary = Color(0xFF3700B3),
     background = Color(0xFF121212),
     surface = Color(0xFF121212),
+    error = Color(0xFFB00020),
     onPrimary = Color.Black,
     onSecondary = Color.Black,
     onTertiary = Color.White,
+    onError = Color.Black,
     onBackground = Color.White,
     onSurface = Color.White
 )
