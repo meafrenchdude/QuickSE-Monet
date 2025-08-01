@@ -1,16 +1,5 @@
 name: Build Debug Apk
 
-on:
-  push:
-    branches:
-      - '**'
-  pull_request:
-    types: [opened]
-  release:
-    types: [published]
-  workflow_dispatch:
-
-jobs:
 build:
     name: Build APK
     runs-on: ubuntu-latest
