@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.maazm7d.quickse"
+    namespace = "com.meafrenchdude.quickse"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.maazm7d.quickse"
+        applicationId = "com.meafrenchdude.quickse"
         minSdk = 25
         targetSdk = 36
         versionCode = 4

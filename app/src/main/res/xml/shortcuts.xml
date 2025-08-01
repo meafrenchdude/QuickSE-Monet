@@ -10,7 +10,7 @@
 
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetPackage="com.maazm7d.quickse"
-            android:targetClass="com.maazm7d.quickse.ShortcutActivity" />
+            android:targetPackage="com.meafrenchdude.quickse"
+            android:targetClass="com.meafrenchdude.quickse.ShortcutActivity" />
     </shortcut>
 </shortcuts>
