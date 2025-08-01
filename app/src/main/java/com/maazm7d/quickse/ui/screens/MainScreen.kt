@@ -37,6 +37,8 @@ import android.content.Intent
 import android.net.Uri
 import com.maazm7d.quickse.ui.components.FooterLinks
 import androidx.core.net.toUri
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 @Composable
 fun MainScreen(navController: NavController) {
@@ -88,6 +90,7 @@ fun MainScreen(navController: NavController) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
                     .padding(innerPadding)
                     .safeDrawingPadding()
                     .padding(horizontal = 24.dp),
