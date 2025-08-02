@@ -22,11 +22,9 @@ private val DarkColorScheme = darkColorScheme(
     tertiary = Color(0xFF3700B3),
     background = Color(0xFF121212),
     surface = Color(0xFF121212),
-    error = Color(0xFFB00020),
     onPrimary = Color.Black,
     onSecondary = Color.Black,
     onTertiary = Color.White,
-    onError = Color.Black,
     onBackground = Color.White,
     onSurface = Color.White
 )
@@ -37,13 +35,11 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Color(0xFF3700B3),
     background = Color.White,
     surface = Color.White,
-    error = Color(0xFFB00020),
     onPrimary = Color.White,
     onSecondary = Color.Black,
     onTertiary = Color.White,
     onBackground = Color.Black,
     onSurface = Color.Black,
-    onError = Color.Black,
 )
 
 @Composable
