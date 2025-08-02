@@ -32,7 +32,7 @@ fun AboutDialog(
             ) {
                 Spacer(Modifier.width(12.dp))
                 Text(
-                    text = "About QuickSE",
+                    text = "About QuickSE: Monet",
                     style = MaterialTheme.typography.headlineSmall,
                     color = MaterialTheme.colorScheme.onSurface
                 )
@@ -46,7 +46,7 @@ fun AboutDialog(
                     .padding(16.dp)
             ) {
                 Text(
-                    "A modern SELinux mode manager... with monet!",
+                    "A modern SELinux mode manager... with some dynamic colors!",
                     style = MaterialTheme.typography.titleSmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
