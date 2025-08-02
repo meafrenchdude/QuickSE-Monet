@@ -52,7 +52,7 @@ You are free to use, modify, and distribute it under the terms of the license.
 ## 📬 Contact / Support
 
 💬 Questions or suggestions?  
-Stay tuned for the next updates on the Telegram channel: [@QuickSE_Monet](https://t.me/QuickSE_Monet)
+Stay tuned for the next updates on the Telegram channel: [@QuickSE_Monet](https://t.me/QuickSE_Monet)   
 Reach out on the Telegram group: [@QuickSE_Monet_Chat](https://t.me/QuickSE_Monet_Chat)
 
 ---
