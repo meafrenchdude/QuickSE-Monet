@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.meafrenchdude.quickse"
-        minSdk = 25
+        minSdk = 31
         targetSdk = 36
         versionCode = 4
         versionName = "4.1"
