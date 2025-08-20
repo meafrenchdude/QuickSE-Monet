@@ -11,8 +11,8 @@ android {
         applicationId = "com.meafrenchdude.quickse"
         minSdk = 31
         targetSdk = 36
-        versionCode = 4
-        versionName = "4.1"
+        versionCode = 5
+        versionName = "5.1.1"
     }
 
     signingConfigs {
