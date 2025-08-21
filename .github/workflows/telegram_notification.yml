@@ -1,0 +1,59 @@
+name: Send GitHub Notifications to Telegram
+
+on:
+  push:
+    branches:
+      - '**'
+  release:
+    types: [published, prereleased]
+  workflow_dispatch:
+
+jobs:
+  send_telegram_notification:
+    name: Send Telegram Notification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram message on push
+        if: github.event_name == 'push'
+        uses: appleboy/telegram-action@master
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          to: ${{ secrets.CHAT_ID }}
+          message: |
+            🚀 **New Commit to ${{ github.repository }}**
+            Branch: `${{ github.ref_name }}`
+            By: `${{ github.actor }}`
+            Commit: `${{ github.event.head_commit.message }}`
+            See changes: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+
+      - name: Send Telegram message for Debug Release/Pre-release
+        if: |
+          github.event_name == 'release' &&
+          contains(github.event.release.tag_name, 'debug')
+        uses: appleboy/telegram-action@master
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          to: ${{ secrets.CHAT_ID }}
+          message: |
+            🛠️ **New Debug Build: `${{ github.event.release.tag_name }}`**
+            Repository: `${{ github.repository }}`
+            ${{ github.event.release.prerelease && 'Type: Pre-release' || 'Type: Release' }}
+            Published by: `${{ github.actor }}`
+            Changes: ${{ github.event.release.html_url }}
+            ${{ github.event.release.body && format('Notes:\n{0}', github.event.release.body) || '' }}
+
+      - name: Send Telegram message for Stable Release
+        if: |
+          github.event_name == 'release' &&
+          !github.event.release.prerelease &&
+          !contains(github.event.release.tag_name, 'debug')
+        uses: appleboy/telegram-action@master
+        with:
+          token: ${{ secrets.BOT_TOKEN }}
+          to: ${{ secrets.CHAT_ID }}
+          message: |
+            🎉 **New Stable Release: `${{ github.event.release.tag_name }}`**
+            Repository: `${{ github.repository }}`
+            Published by: `${{ github.actor }}`
+            Check it out: ${{ github.event.release.html_url }}
+            ${{ github.event.release.body && format('Release Notes:\n{0}', github.event.release.body) || '' }}
