@@ -70,7 +70,7 @@ fun AboutDialog(
 }
 
 @Composable
-private fun LabeledText(label: String, value: String, url: String? = null) {
+private fun LabeledText(label: String, value: String) {
     Row(
         modifier = Modifier.padding(vertical = 2.dp),
         verticalAlignment = Alignment.CenterVertically
