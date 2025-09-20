@@ -22,38 +22,43 @@ class SelinuxViewModel : ViewModel() {
                 output.write("exit\n".toByteArray())
                 output.flush()
                 process.waitFor()
-                
+
                 _uiState.value = _uiState.value.copy(
                     isRootAvailable = process.exitValue() == 0
                 )
             } catch (e: Exception) {
                 _uiState.value = _uiState.value.copy(
                     isRootAvailable = false,
-                    message = "Root check failed: ${e.message}"
                 )
             }
         }
     }
 
     fun getSelinuxStatus() {
-    viewModelScope.launch(Dispatchers.IO) {
-        try {
-            val process = Runtime.getRuntime().exec(arrayOf("su", "-c", "getenforce"))
-            val reader = BufferedReader(InputStreamReader(process.inputStream))
-            val status = reader.readLine()?.trim() ?: "Unknown"
-            process.waitFor()
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val process = Runtime.getRuntime().exec(arrayOf("su", "-c", "getenforce"))
+                val reader = BufferedReader(InputStreamReader(process.inputStream))
+                val status = reader.readLine()?.trim() ?: "Unknown"
+                process.waitFor()
 
-            _uiState.value = _uiState.value.copy(
-                status = status
-            )
-        } catch (e: Exception) {
-            _uiState.value = _uiState.value.copy(
-                status = "Unknown",
-                message = "Failed to get SELinux status: ${e.message}"
-            )
+                _uiState.value = _uiState.value.copy(
+                    status = status
+                )
+            } catch (e: Exception) {
+                if (_uiState.value.isRootAvailable) {
+                    _uiState.value = _uiState.value.copy(
+                        status = "Unknown",
+                        message = "Failed to get SELinux status: ${e.message}"
+                    )
+                } else {
+                    _uiState.value = _uiState.value.copy(
+                        status = "Unknown"
+                    )
+                }
+            }
         }
     }
-}
 
     fun toggleSelinuxMode() {
         viewModelScope.launch(Dispatchers.IO) {
