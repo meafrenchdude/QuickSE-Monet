@@ -39,11 +39,11 @@
 </p>
 
 <p align="center">
-  <a href="https://t.me/Quick_SE_Monet">
-    <img src="https://telegram-badge.vercel.app/api/telegram-badge?channelId=@QuickSE_Monet&style=for-the-badge&label=QuickSE: Monet&labelColor=000000" alt="Telegram: QuickSE: Monet">
+  <a href="https://t.me/QuickSE_Monet">
+    <img src="https://img.shields.io/badge/Telegram_Channel-QuickSE%3A_Monet-2DA7E4?style=for-the-badge&logo=telegram&logoColor=FFFFFF&labelColor=000000" alt="Telegram: QuickSE: Monet">
   </a>
   <a href="https://t.me/QuickSE_Monet_Chat">
-    <img src="https://telegram-badge.vercel.app/api/telegram-badge?channelId=@QuickSE_Monet_Chat&style=for-the-badge&label=QuickSE: Monet Chat&labelColor=000000" alt="QuickSE: Monet Chat" />
+    <img src="https://img.shields.io/badge/Telegram_Chat-QuickSE%3A_Monet_Chat-2DA7E4?style=for-the-badge&logo=telegram&logoColor=FFFFFF&labelColor=000000" alt="QuickSE: Monet Chat" />
   </a>
 
 ---
