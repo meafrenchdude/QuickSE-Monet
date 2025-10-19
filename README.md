@@ -6,7 +6,18 @@
 
 <p align="center">
   🔐 <i>Instantly check & toggle SELinux status on rooted Android devices... with a bit of a re-color touch.</i><br>
-  <code>Material You</code> · <code>Jetpack Compose</code> · <code>Kotlin</code>
+</p>
+
+<p align="center">
+  <a href="https://m3.material.io/blog/start-building-with-material-you">
+   <img src="https://custom-icon-badges.demolab.com/badge/Material You-00639B?style=for-the-badge&logo=materialdesign&logocolor=FFFFFF" alt="Material You"/> 
+  </a>
+  <a href="https://developer.android.com/compose">  
+    <img src="https://custom-icon-badges.demolab.com/badge/Jetpack Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=FFFFFF" alt="Jetpack Compose"/>
+  </a>
+  <a href="https://kotlinlang.org">
+    <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=FFFFFF" alt="  Kotlin">
+  </a>
 </p>
 
 <p align="center">
@@ -16,10 +27,24 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/stars/meafrenchdude/QuickSE-Monet?style=for-the-badge"/>
-  <img src="https://img.shields.io/github/forks/meafrenchdude/QuickSE-Monet?style=for-the-badge"/>
-  <img src="https://img.shields.io/github/license/meafrenchdude/QuickSE-Monet?style=for-the-badge"/>
+  <a href="https://github.com/meafrenchdude/QuickSE-Monet/stargazers">
+    <img src="https://custom-icon-badges.demolab.com/github/stars/meafrenchdude/QuickSE-Monet?style=for-the-badge&logo=star&labelColor=000000&color=D6AE22" alt="Stars" />
+  </a>
+  <a href="https://github.com/meafrenchdude/QuickSE-Monet/forks">
+    <img src="https://custom-icon-badges.demolab.com/github/forks/meafrenchdude/QuickSE-Monet?style=for-the-badge&logo=repo-forked&labelColor=000000&color=EE7A3B" alt="Forks" />
+  </a>
+  <a href="https://github.com/meafrenchdude/QuickSE-Monet/blob/main/LICENSE">
+    <img src="https://custom-icon-badges.demolab.com/github/license/meafrenchdude/QuickSE-Monet?style=for-the-badge&logo=law&labelColor=000000&color=4AC51C" alt="License"/>
+  </a>
 </p>
+
+<p align="center">
+  <a href="https://t.me/Quick_SE_Monet">
+    <img src="https://telegram-badge.vercel.app/api/telegram-badge?channelId=@QuickSE_Monet&style=for-the-badge&label=QuickSE: Monet&labelColor=000000" alt="Telegram: QuickSE: Monet">
+  </a>
+  <a href="https://t.me/QuickSE_Monet_Chat">
+    <img src="https://telegram-badge.vercel.app/api/telegram-badge?channelId=@QuickSE_Monet_Chat&style=for-the-badge&label=QuickSE: Monet Chat&labelColor=000000" alt="QuickSE: Monet Chat" />
+  </a>
 
 ---
 
